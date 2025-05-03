@@ -6,6 +6,7 @@ function App() {
   return (
     <ThemeProvider>
       <ModeToggle />
+      <div>테스트용</div>
       <div className="flex flex-col items-center justify-center min-h-svh">
         <Button>Click me</Button>
       </div>
