@@ -6,56 +6,48 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
+        기능 개발을 위한 이슈를 작성해주셔서 감사합니다! 아래 양식을 작성해주세요.
   - type: textarea
-    id: what-happened
+    id: feature-description
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: 개발하고자 하는 기능 설명
+      description: 어떤 기능을 개발하고 싶은지 자세히 설명해주세요.
+      placeholder: 예: 사용자가 자신의 챔피언 통계를 볼 수 있는 대시보드 기능을 개발하고 싶습니다.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation-idea
+    attributes:
+      label: 구현 아이디어
+      description: 기능 구현에 대한 구체적인 아이디어가 있다면 공유해주세요.
+      placeholder: 구현 방법에 대한 아이디어나 참고할 만한 예시를 설명해주세요.
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 우선순위
+      description: 이 기능의 우선순위를 선택해주세요.
+      options:
+        - 높음
+        - 중간
+        - 낮음
     validations:
       required: true
   - type: dropdown
-    id: version
+    id: estimated-effort
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: 예상 소요 시간
+      description: 이 기능 개발에 예상되는 소요 시간을 선택해주세요.
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+        - 1일 이내
+        - 1주일 이내
+        - 2주일 이내
+        - 1개월 이내
+        - 1개월 이상
     validations:
       required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: additional-context
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: 추가 정보
+      description: 기능 개발과 관련된 추가 정보나 참고자료를 공유해주세요.
+      placeholder: 스크린샷, 참고할 만한 사이트, 추가 설명 등을 작성해주세요.
