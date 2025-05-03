@@ -28,17 +28,19 @@ body:
       label: 세부 요구사항
       description: 해당 기능에 필요한 조건이나 동작을 명시해주세요.
       placeholder: 예) - 특정 조건일 때 알림 생성 / - 사용자는 알림을 읽음으로 표시할 수 있어야 함
-  - type: checkboxes
-    id: impact
+  - type: dropdown
+    id: estimated-time
     attributes:
-      label: 관련된 영역
-      description: 이 기능이 영향을 주는 부분이 있다면 선택해주세요.
+      label: 예상 소요 시간
+      description: 이 기능을 구현하는 데 걸릴 것으로 예상되는 시간을 선택해주세요.
       options:
-        - label: 프론트엔드
-        - label: 백엔드
-        - label: API
-        - label: DB
-        - label: 테스트 코드
+        - 반나절 이내
+        - 하루 이내
+        - 2~3일
+        - 일주일 이내
+        - 일주일 이상
+    validations:
+      required: true
   - type: textarea
     id: additional-info
     attributes:
