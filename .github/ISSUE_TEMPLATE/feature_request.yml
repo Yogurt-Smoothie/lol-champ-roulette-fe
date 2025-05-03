@@ -1,42 +1,64 @@
-name: 기능 개발
-description: 기능 개발에 대한 이슈를 작성해주세요.
-title: "[FEATURE] "
-labels: ["enhancement"]
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+projects: ["octo-org/1", "octo-org/44"]
+assignees:
+  - octocat
 body:
   - type: markdown
     attributes:
       value: |
-        새로운 기능을 제안해주셔서 감사합니다! 아래 양식을 작성해주세요.
-  - type: textarea
-    id: problem
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
     attributes:
-      label: 문제 설명
-      description: 이 기능이 해결하고자 하는 문제가 무엇인지 설명해주세요.
-      placeholder: 예: 저는 항상 [...]할 때 불편함을 느낍니다.
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
     validations:
-      required: true
+      required: false
   - type: textarea
-    id: solution
+    id: what-happened
     attributes:
-      label: 제안하는 해결책
-      description: 어떤 기능을 개발하고 싶은지 설명해주세요.
-      placeholder: 예: 오늘 저는 항상 이 기능을 개발하고 싶습니다.
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
     validations:
       required: true
   - type: dropdown
-    id: priority
+    id: version
     attributes:
-      label: 우선순위
-      description: 이 기능의 우선순위를 선택해주세요.
+      label: Version
+      description: What version of our software are you running?
       options:
-        - 높음
-        - 중간
-        - 낮음
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
     validations:
       required: true
-  - type: textarea
-    id: additional-context
+  - type: dropdown
+    id: browsers
     attributes:
-      label: 추가 컨텍스트
-      description: 기능 요청에 대한 다른 컨텍스트나 스크린샷을 추가해주세요.
-      placeholder: 추가 정보를 입력해주세요... 
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
