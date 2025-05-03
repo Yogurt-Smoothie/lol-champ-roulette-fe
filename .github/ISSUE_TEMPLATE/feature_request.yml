@@ -1,10 +1,7 @@
-name: Bug Report
-description: File a bug report.
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+name: 기능 개발
+description: 기능 개발에 대한 이슈를 작성해주세요.
+title: "[Feature]: "
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
