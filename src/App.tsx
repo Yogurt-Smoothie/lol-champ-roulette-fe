@@ -1,14 +1,10 @@
 import { ThemeProvider } from "@/shared/components/theme-provider";
-import { Button } from "@/shared/components/ui/button";
-import { ModeToggle } from "@/shared/components/mode-toggle";
+import Home from "@/app/Home";
 
 function App() {
   return (
     <ThemeProvider>
-      <ModeToggle />
-      <div className="flex flex-col items-center justify-center min-h-svh">
-        <Button>Click me</Button>
-      </div>
+      <Home />
     </ThemeProvider>
   );
 }
