@@ -1,11 +1,16 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "@/shared/components/theme-provider";
 import Home from "@/app/Home";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <ThemeProvider>
-      <Home />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
