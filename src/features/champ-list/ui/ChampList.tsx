@@ -1,4 +1,4 @@
-import { useGetChampList } from "../model/useGetChampList";
+import { useGetChampList } from "../model/useChampList";
 import type { Champion } from "@/@types";
 
 function ChampList() {
