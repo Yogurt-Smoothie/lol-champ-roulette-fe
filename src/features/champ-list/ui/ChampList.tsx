@@ -1,5 +1,6 @@
-import { useGetChampList } from "../model/useChampList";
 import type { Champion } from "@/@types";
+import { useGetChampList } from "../model/useChampList";
+import ChampListItem from "./ChampListItem";
 
 function ChampList() {
   const { data: champions, isLoading, error } = useGetChampList();
@@ -26,20 +27,7 @@ function ChampList() {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
         {champions?.map((champ: Champion) => (
-          <div
-            key={champ.id}
-            className="flex flex-col items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <img
-              src={`https://ddragon.leagueoflegends.com/cdn/15.9.1/img/champion/${champ.image.full}`}
-              alt={champ.name}
-              className="w-16 h-16 rounded-full mb-2"
-            />
-            <h3 className="font-semibold text-center">{champ.name}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-              {champ.title}
-            </p>
-          </div>
+          <ChampListItem key={champ.id} champ={champ} />
         ))}
       </div>
     </div>
