@@ -6,7 +6,6 @@ function Footer() {
           <div className="text-lg font-semibold">개발자 정보</div>
           <div className="space-y-2 text-sm md:text-base">
             <p>E-mail: zoro94317@gmail.com</p>
-            <p>이름: 차민재</p>
             <p className="break-words">
               GitHub:{" "}
               <a
