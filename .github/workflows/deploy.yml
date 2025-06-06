@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       # 1. 레포지토리 코드 가져오기
@@ -26,8 +29,27 @@ jobs:
       # 4. 리액트 앱 빌드
       - name: Build React App
         run: npm run build
+      
+      # 5. 빌드 결과물 캐시에 저장
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-build
+          path: dist
 
-      # 5. AWS credentials 설정
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 빌드 결과물 받기
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: react-build
+          path: dist
+
+      # 2. AWS credentials 설정
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -35,12 +57,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # 6. S3 기존 파일 제거 후 빌드 결과물 업로드
+      # 3. S3 기존 파일 제거 후 빌드 결과물 업로드
       - name: Upload to S3
         run: |
           aws s3 rm --recursive s3://lol-champ-roulette-web-page
           aws s3 cp ./dist s3://lol-champ-roulette-web-page/ --recursive
 
-      # 7. CloudFront 캐시 무효화
+      # 4. CloudFront 캐시 무효화
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id EE2I36TI9TRTB --paths "/*"
